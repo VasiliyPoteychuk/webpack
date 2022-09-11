@@ -1,38 +1,33 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.buildRectangle{
+  width: 300px;
+  height: 300px;
+  /* border: 1px solid grey; */
+  position: absolute;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.moveRectangle{
+  width: inherit;
+  height: inherit;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas: 
+  ". upTurn ."
+  "leftTurn return rightTurn"
+  ". downTurn .";
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.upMoveRectangle{
+  grid-area: upTurn;
 }
-
-.App-link {
-  color: #61dafb;
+.downMoveRectangle{
+  grid-area: downTurn;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.leftMoveRectangle{
+  grid-area: leftTurn;
+}
+.rightMoveRectangle{
+  grid-area: rightTurn;
+}
+.returnMoveRectangle{
+  grid-area: return;
 }
