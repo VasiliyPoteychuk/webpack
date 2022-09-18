@@ -1,53 +1,39 @@
-import React, {Component} from 'react';
-import CreateRectangle from './rectangle';
-import './App.css';
-//первый вариант
-// class App extends Component {
-//   constructor(props){
-//     super(props)
-//     this.state={
-//       x: 100,
-//       y: 100
-//     }
-//    this.moveRectangle=this.moveRectangle.bind(this) 
-//   }
+import React, {Fragment, useEffect, useState} from 'react';
+import CreateLists from './lists';
+import ChangePage from './pages';
+import './App.css'
 
-//   moveRectangle(deltaX,deltaY){
+export default function App (props){
+  const [users, setUsers] = useState([])
+  const [limit, setLimit] = useState(20)
+  const [skip, setSkip] = useState(0)
+  const [total, setTotal] = useState(0)
+  useEffect(()=>{
+    async function getUsers(){
+    const response = await fetch (`http://dummyjson.com/users/?limit=${limit}&skip=${skip}`)
+    const json = await response.json()
     
-//     this.setState(state=>({
-//       x:state.x+deltaX,
-//       y:state.y+deltaY
-//     }))
-//   }
-
-//   render(){
-//     return (
-//     <div className="App"
-//     style={{
-//       position: 'absolute',
-//       top: this.state.x,
-//       left: this.state.y
-//     }}
-//     >
-//       <CreateRectangle 
-//       onMove={this.moveRectangle}/>
-//     </div>
-//     )
-//   }
-// }
-
-//второй вариант
-class App extends Component{
-  constructor(props){
-    super(props)
+    setUsers(json.users)
+    setTotal(json.total)
+    if(total-limit<skip){
+      setSkip(total-limit)
+    }
+    if(skip<0){
+      setSkip(0)
+    }
   }
-
-  render(){
-    return(
-      <div>
-        <CreateRectangle/>
-      </div>
-    )
-  }
+  getUsers()
+  },[limit, skip])
+  
+  return(
+    <Fragment>
+      <ChangePage 
+      limits={limit}
+      totals={total}
+      onChangeLimit={(data)=>setLimit(data)}
+      onChangePage={(sing)=>setSkip(sing=='+'?+skip+ +limit:sing=='-'?+skip- +limit:'')}
+      />
+      <CreateLists tableLists={users}/>
+    </Fragment>
+  )
 }
-export default App;

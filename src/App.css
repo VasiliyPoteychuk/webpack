@@ -1,33 +1,11 @@
-
-.buildRectangle{
-  width: 300px;
-  height: 300px;
-  /* border: 1px solid grey; */
-  position: absolute;
+.checked{
+  background-color: lightgrey;
 }
-.moveRectangle{
-  width: inherit;
-  height: inherit;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-areas: 
-  ". upTurn ."
-  "leftTurn return rightTurn"
-  ". downTurn .";
+.viewData{
+  display: flex;
+  align-items: center;
+  
 }
-.upMoveRectangle{
-  grid-area: upTurn;
-}
-.downMoveRectangle{
-  grid-area: downTurn;
-}
-.leftMoveRectangle{
-  grid-area: leftTurn;
-}
-.rightMoveRectangle{
-  grid-area: rightTurn;
-}
-.returnMoveRectangle{
-  grid-area: return;
+.viewDataUl{
+  list-style-type: none;
 }
