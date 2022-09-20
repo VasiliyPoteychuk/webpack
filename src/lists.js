@@ -24,8 +24,6 @@ export default function CreateLists (props){
             <li>age:{user.age}</li>
           </ul>
         </div>
-        
-        
       </div> :
       <h1>choose user</h1> }
       
