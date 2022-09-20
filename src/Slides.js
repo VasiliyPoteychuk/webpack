@@ -2,12 +2,12 @@ import {Fragment, useEffect, useState} from 'react';
 
 export default function Slider(props){
   const [ind, setInd] = useState(0)
+  const [mouseHover, setMouseHover]=useState(true)
   
-  
-  // {props.auto &&props.delay?
-  //   setInterval(function(){ind<props.slides.length-1?setInd(ind+1):setInd(0)},props.delay*1000):
-  //   setInterval(function(){ind<props.slides.length-1?setInd(ind+1):setInd(0)},5000)
-  // }
+  {mouseHover && props.auto && Number(props.delay)?
+    setInterval(function(){ind<props.slides.length-1?setInd(ind+1):setInd(0)},props.delay*1000):
+    setInterval(function(){ind<props.slides.length-1?setInd(ind+1):setInd(0)},6000)
+  }
   
   return(
     
@@ -15,7 +15,9 @@ export default function Slider(props){
       
       <div style={{width:'max-content', display:'flex', flexDirection:'column', justifyContent:'center',position:'relative'}}>
       <img src={props.slides[ind].img} 
-      value={props.slides[ind].text}
+        value={props.slides[ind].text}
+        onMouseOver={()=>setMouseHover(false)}
+        onMouseOut={()=>setMouseHover(true)}
       />
       <h1 className='imgName' 
         style={{position:'absolute', top:'280px',left:'420px', color:'white'}}
