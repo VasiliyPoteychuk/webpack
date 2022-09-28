@@ -1,5 +1,6 @@
 .checked{
   background-color: lightgrey;
+ 
 }
 .viewData{
   display: flex;
@@ -8,4 +9,49 @@
 }
 .viewDataUl{
   list-style-type: none;
+}
+.done{
+   text-decoration: line-through;
+}
+.done:before{
+  content: "+";
+}
+.tasksList{
+  padding-left: 0;
+  width: 400px;
+  height: 500px;
+  border: 2px solid gray;
+  list-style: none;
+}
+.tasksList>li>button{
+  text-decoration: none;
+}
+.listProducts{
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: auto;
+}
+.listProducts>li{
+  
+  margin: 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  box-shadow: 0px 0px 8px 5px grey;
+  
+}
+.listProducts>li>img{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+.listProducts>li>button{
+  width: 50%;
+  margin: 0 auto 20px;
+}
+.cartList>td>img{
+  width: 20px;
+  height: 20px;
 }
